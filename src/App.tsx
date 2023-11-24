@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
+import "./App.css"
 import Die, { DieProps } from "./Die";
 
 interface DieState {

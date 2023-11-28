@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
-export default function Score(props) {
-  interface DieState {
-    value: number;
-    held: boolean;
-    id: number;
-  }
- 
+export default function Score() {
+  //   interface DieState {
+  //     value: number;
+  //     held: boolean;
+  //     id: number;
+  //   }
+
   return (
     <div className="records">
       <p>

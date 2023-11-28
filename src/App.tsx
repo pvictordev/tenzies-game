@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import "./App.css";
-import Die, { DieProps } from "./components/Die";
-import Score from "./components/Score";
+import Die from "./components/Die";
+// import { DieProps } from "./components/Die";
+// import { Score } from "./components/Score";
 
 interface DieState {
   value: number;
@@ -60,11 +61,11 @@ export default function App(): JSX.Element {
   }
 
   const diceElements: JSX.Element[] = dice.map((die) => (
-    <Die key={die.id} {...(die as DieProps)} hold={() => holdDice(die.id)} />
+    // <Die key={die.id} {...(die as DieProps)} hold={() => holdDice(die.id)} />
+    <Die key={die.id} {...die} hold={() => holdDice(die.id)} />
   ));
 
   //timer
-
 
   return (
     <section className="tenzies">

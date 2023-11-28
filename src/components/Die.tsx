@@ -32,8 +32,8 @@ export default function Die(props: DieProps): JSX.Element {
   }
 
   const styles: React.CSSProperties = {
-    backgroundColor: props.held ? "#59E391" : "white",
-    backgroundImage: `url(${dieFace})`,
+    backgroundColor: props.held ? "#59E391" : "",
+    background: `url(${dieFace}) 0 0 / cover no-repeat`,
   };
 
   return (

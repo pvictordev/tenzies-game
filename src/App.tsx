@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import "./App.css";
-import Die, { DieProps } from "./Die";
+import Die, { DieProps } from "./components/Die";
+import Score from "./components/Score";
 
 interface DieState {
   value: number;
@@ -62,50 +63,43 @@ export default function App(): JSX.Element {
     <Die key={die.id} {...(die as DieProps)} hold={() => holdDice(die.id)} />
   ));
 
+  //timer
+
+
   return (
     <section className="tenzies">
       {tenzies && <Confetti className="confetti" />}
       <main>
         <h1>Tenzies</h1>
-        {/* {tenzies ? <p>
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
-        </p>
-        :<p>You Won</p>
-        } */}
+        {!tenzies && (
+          <p className="instructions">
+            Roll until all dice are the same.
+            <br /> Click each die to freeze it at its current value between
+            rolls.
+          </p>
+        )}
+        {tenzies && <p className="winner"> YOU WON!</p>}
 
-        <p>
-          Roll until all dice are the same. Click each die to freeze it at its
-          current value between rolls.
-        </p>
-        {/* 
-        <p>You Won</p> 
-        */}
-
-        <div className="timer-counter records">
+        {/* <div className="timer-counter records">
           <p>
             Rolls: <span>0</span>
           </p>
           <p>
             Timer: <span>0s</span>
           </p>
-        </div>
+        </div> */}
         <div className="die-container">{diceElements}</div>
         <button className="roll-dice" onClick={rollUnheldDice}>
           {tenzies ? "Reset" : "Roll"}
         </button>
 
-        <div className="records">
-          <p>
-            Best Rolls | <span className="record">0</span>
-          </p>
-          <p>
-            Best Time | <span className="record">0s</span>
-          </p>
-        </div>
+        {/* <Score /> */}
       </main>
       <div>
-        Coded by <a href="https://github.com/pvictordev">@pvictordev</a>
+        Coded by{" "}
+        <a className="link" href="https://github.com/pvictordev">
+          @pvictordev
+        </a>
       </div>
     </section>
   );

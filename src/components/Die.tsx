@@ -9,7 +9,7 @@ import dice6 from "../assets/dice-6.png";
 interface DieProps {
   held: boolean;
   value: number;
-  hold: () => void;
+  hold: () => void; 
 }
 
 export default function Die(props: DieProps): JSX.Element {

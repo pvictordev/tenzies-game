@@ -29,6 +29,14 @@ body {
   width: 65%;
   column-gap: 0rem;
 }
+.timer-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  & p {
+  }
+}
 /* .instructions {
 } */
 .winner {

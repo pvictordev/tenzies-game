@@ -18,6 +18,7 @@ export default function App(): JSX.Element {
   const [rollCount, setRollCount] = useState<number>(0);
   const [timer, setTimer] = useState({ seconds: 0, milliseconds: 0 });
   const [timerOn, setTimerOn] = useState<boolean>(false);
+
   const [bestRolls, setBestRolls] = useState<number>(0);
   const [bestTime, setBestTime] = useState<number>(0);
 
@@ -58,7 +59,9 @@ export default function App(): JSX.Element {
     } else {
       setDice(allNewDice());
       setTenzies(false);
-      setRollCount((prevRollCount) => (prevRollCount = 0));
+      setRollCount(0);
+      setTimer({ seconds: 0, milliseconds: 0 });
+      setTimerOn(false);
     }
   }
 
@@ -66,6 +69,7 @@ export default function App(): JSX.Element {
     setDice((prevDice) =>
       prevDice.map((die) => (die.id === id ? { ...die, held: !die.held } : die))
     );
+    setTimerOn(true);
   }
   //timer
   useEffect(() => {
@@ -73,7 +77,7 @@ export default function App(): JSX.Element {
 
     if (timerOn) {
       interval = setInterval(() => {
-        setTimerOn((prevTime) => {
+        setTimer((prevTime) => {
           let newMilliseconds = prevTime.milliseconds + 10;
           let newSeconds = prevTime.seconds;
 
@@ -91,6 +95,10 @@ export default function App(): JSX.Element {
 
     return () => clearInterval(interval);
   }, [timerOn]);
+
+  useEffect(() => {
+    setTimerOn(false);
+  }, [tenzies]);
 
   const diceElements: JSX.Element[] = dice.map((die) => (
     // <Die key={die.id} {...(die as DieProps)} hold={() => holdDice(die.id)} />
@@ -111,7 +119,7 @@ export default function App(): JSX.Element {
         )}
         {tenzies && <p className="winner"> YOU WON!</p>}
 
-        <div className="timer-counter records">
+        <div className="timer-counter">
           <p>
             Rolls: <span>{rollCount}</span>
           </p>
@@ -129,7 +137,7 @@ export default function App(): JSX.Element {
           {tenzies ? "Reset" : "Roll"}
         </button>
 
-        <Score rollCount={rollCount} />
+        <Score />
       </main>
       <div>
         Coded by{" "}

@@ -129,7 +129,8 @@ export default function App(): JSX.Element {
               .toString()
               .padStart(2, "0")}:${timer.milliseconds
               .toString()
-              .padStart(2, "0")}`}</span>
+              .padStart(3, "0")
+              .slice(0, 2)}`}</span>
           </p>
         </div>
         <div className="die-container">{diceElements}</div>

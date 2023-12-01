@@ -26,7 +26,8 @@ body {
 }
 .records {
   display: flex;
-  width: 50%;
+  width: 65%;
+  column-gap: 0rem;
 }
 /* .instructions {
 } */
@@ -51,9 +52,9 @@ body {
   text-shadow: 0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1);
 }
 main {
-  max-width: 600px;
+  width: 500px;
   height: 550px;
-  padding: 2rem;
+  padding: 1.5rem;
   margin-inline: auto;
   border-radius: 15px;
   display: flex;
@@ -123,7 +124,7 @@ p {
   margin-bottom: 20px;
 }
 
-.die-face {
+/* .die-face {
   grid-row: span 1;
   height: 45px;
   width: 45px;
@@ -134,8 +135,7 @@ p {
   cursor: pointer;
   box-shadow: 0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1);
   transition: 0.1s all ease;
-  /* background: url("./assets/dice-4.png") 0 0 / cover no-repeat; */
-}
+} */
 .die-face:hover {
   transform: scale(1.2);
 }
@@ -150,7 +150,6 @@ p {
   width: 120px;
   border: none;
   border-radius: 6px;
-  background: rgb(255, 221, 0);
   background: linear-gradient(
     41deg,
     rgba(255, 221, 0, 1) 26%,
@@ -161,7 +160,13 @@ p {
   font-size: 1.2rem;
   transition: all 0.1s ease-in-out;
 }
-
+.roll-dice:hover {
+  background: linear-gradient(
+    200deg,
+    rgba(255, 221, 0, 1) 26%,
+    rgba(255, 0, 0, 1) 100%
+  );
+}
 .roll-dice:active {
   transform: scale(0.95);
 }
@@ -187,7 +192,7 @@ p {
   .die-face {
     height: 35px;
     width: 35px;
-    border-radius:6px ;
+    border-radius: 6px;
   }
   .die-num {
     font-size: 1.5em;

@@ -6,7 +6,6 @@ import dice4 from "../assets/dice-4.png";
 import dice5 from "../assets/dice-5.png";
 import dice6 from "../assets/dice-6.png";
 
-
 interface DieProps {
   held: boolean;
   value: number;
@@ -41,6 +40,16 @@ export default function Die(props: DieProps): JSX.Element {
   const styles: React.CSSProperties = {
     backgroundColor: props.held ? "#59E391" : "",
     background: `url(${dieFace}) 0 0 / cover no-repeat`,
+    gridRow: "span 1",
+    height: "45px",
+    width: "45px",
+    borderRadius: "7.5px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer",
+    boxShadow: "0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1)",
+    transition: "0.1s all ease",
   };
 
   return (

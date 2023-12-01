@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import "./App.css";
 import Die from "./components/Die";
-// import { DieProps } from "./components/Die";
-// import { Score } from "./components/Score";
+import { DieProps } from "./components/Die";
+import Score from "./components/Score";
 
 interface DieState {
   value: number;
@@ -14,6 +14,12 @@ interface DieState {
 export default function App(): JSX.Element {
   const [dice, setDice] = useState<DieState[]>(allNewDice());
   const [tenzies, setTenzies] = useState<boolean>(false);
+
+  const [rollCount, setRollCount] = useState<number>(0);
+  const [timer, setTimer] = useState({ seconds: 0, milliseconds: 0 });
+  const [timerOn, setTimerOn] = useState<boolean>(false);
+  const [bestRolls, setBestRolls] = useState<number>(0);
+  const [bestTime, setBestTime] = useState<number>(0);
 
   useEffect(() => {
     const firstValue = dice[0].value;
@@ -48,9 +54,11 @@ export default function App(): JSX.Element {
           die.held ? die : { value: randomDieValue(), held: false, id: i + 1 }
         )
       );
+      setRollCount((prevRollCount) => prevRollCount + 1);
     } else {
       setDice(allNewDice());
       setTenzies(false);
+      setRollCount((prevRollCount) => (prevRollCount = 0));
     }
   }
 
@@ -59,13 +67,35 @@ export default function App(): JSX.Element {
       prevDice.map((die) => (die.id === id ? { ...die, held: !die.held } : die))
     );
   }
+  //timer
+  useEffect(() => {
+    let interval;
+
+    if (timerOn) {
+      interval = setInterval(() => {
+        setTimerOn((prevTime) => {
+          let newMilliseconds = prevTime.milliseconds + 10;
+          let newSeconds = prevTime.seconds;
+
+          if (newMilliseconds >= 1000) {
+            newSeconds++;
+            newMilliseconds = 0;
+          }
+
+          return { seconds: newSeconds, milliseconds: newMilliseconds };
+        });
+      }, 10);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [timerOn]);
 
   const diceElements: JSX.Element[] = dice.map((die) => (
     // <Die key={die.id} {...(die as DieProps)} hold={() => holdDice(die.id)} />
     <Die key={die.id} {...die} hold={() => holdDice(die.id)} />
   ));
-
-  //timer
 
   return (
     <section className="tenzies">
@@ -81,20 +111,25 @@ export default function App(): JSX.Element {
         )}
         {tenzies && <p className="winner"> YOU WON!</p>}
 
-        {/* <div className="timer-counter records">
+        <div className="timer-counter records">
           <p>
-            Rolls: <span>0</span>
+            Rolls: <span>{rollCount}</span>
           </p>
           <p>
-            Timer: <span>0s</span>
+            Timer:{" "}
+            <span>{`${timer.seconds
+              .toString()
+              .padStart(2, "0")}:${timer.milliseconds
+              .toString()
+              .padStart(2, "0")}`}</span>
           </p>
-        </div> */}
+        </div>
         <div className="die-container">{diceElements}</div>
         <button className="roll-dice" onClick={rollUnheldDice}>
           {tenzies ? "Reset" : "Roll"}
         </button>
 
-        {/* <Score /> */}
+        <Score rollCount={rollCount} />
       </main>
       <div>
         Coded by{" "}

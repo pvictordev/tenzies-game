@@ -1,16 +1,16 @@
-// import React from "react";
+import React from "react";
 
-export default function Score() {
-  //   interface DieState {
-  //     value: number;
-  //     held: boolean;
-  //     id: number;
-  //   }
+export default function Score({ rollCount }) {
+  interface DieState {
+    value: number;
+    held: boolean;
+    id: number;
+  }
 
   return (
     <div className="records">
       <p>
-        Best Rolls | <span className="record">0</span>
+        Best Rolls | <span className="record">{rollCount}</span>
       </p>
       <p>
         Best Time | <span className="record">0s</span>

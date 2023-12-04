@@ -73,7 +73,7 @@ export default function App(): JSX.Element {
   }
   //timer
   useEffect(() => {
-    let interval;
+    let interval: number | undefined;
 
     if (timerOn) {
       interval = setInterval(() => {

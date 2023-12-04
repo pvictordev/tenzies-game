@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import "./App.css";
 import Die from "./components/Die";
-import { DieProps } from "./components/Die";
+// import { DieProps } from "./components/Die";
 import Score from "./components/Score";
 
 interface DieState {
@@ -19,8 +19,8 @@ export default function App(): JSX.Element {
   const [timer, setTimer] = useState({ seconds: 0, milliseconds: 0 });
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
-  const [bestRolls, setBestRolls] = useState<number>(0);
-  const [bestTime, setBestTime] = useState<number>(0);
+  // const [bestRolls, setBestRolls] = useState<number>(0);
+  // const [bestTime, setBestTime] = useState<number>(0);
 
   useEffect(() => {
     const firstValue = dice[0].value;

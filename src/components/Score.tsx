@@ -1,11 +1,5 @@
-import React from "react";
-
 export default function Score() {
-  interface DieState {
-    value: number;
-    held: boolean;
-    id: number;
-  }
+
 
   return (
     <div className="records">

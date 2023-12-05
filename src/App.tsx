@@ -105,6 +105,7 @@ export default function App(): JSX.Element {
     <Die key={die.id} {...die} hold={() => holdDice(die.id)} />
   ));
 
+console.log(timer)
   return (
     <section className="tenzies">
       {tenzies && <Confetti className="confetti" />}
@@ -137,8 +138,8 @@ export default function App(): JSX.Element {
         <button className="roll-dice" onClick={rollUnheldDice}>
           {tenzies ? "Reset" : "Roll"}
         </button>
-
-        <Score />
+              
+        <Score rollCount={rollCount} timer={timer} tenzies={tenzies} />
       </main>
       <div>
         Coded by{" "}

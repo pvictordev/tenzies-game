@@ -7,7 +7,7 @@ export default function Score({ rollCount, timer, tenzies }) {
   useEffect(() => {
     if (tenzies) {
       setCurrentRollCount(rollCount);
-      // Проверяем, что timer является числом перед его использованием
+      // Verify if timer is a number
       if (typeof timer === "number") {
         setCurrentTimer(`${timer}s`);
       }

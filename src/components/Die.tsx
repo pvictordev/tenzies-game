@@ -54,7 +54,6 @@ export default function Die(props: DieProps): JSX.Element {
 
   return (
     <div className="die-face" onClick={props.hold} style={styles}>
-      {/* <h2 className="die-num">{props.value}</h2> */}
     </div>
   );
 }

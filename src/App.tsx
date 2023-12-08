@@ -20,7 +20,7 @@ export default function App(): JSX.Element {
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
   // const [bestRolls, setBestRolls] = useState<number>(0);
-  // const [bestTime, setBestTime] = useState<number>(0);
+  // const [bestTime, setBestTime] = useState<number>(0);p
 
   useEffect(() => {
     const firstValue = dice[0].value;

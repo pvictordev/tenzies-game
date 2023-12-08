@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
 
 export default function Score({ rollCount, timer, tenzies }) {
-  const [currentRollCount, setCurrentRollCount] = useState(0);
-  const [currentTimer, setCurrentTimer] = useState("0s");
-
-  useEffect(() => {
-    if (tenzies) {
-      setCurrentRollCount(rollCount);
-      // Verify if timer is a number
-      if (typeof timer === "number") {
-        setCurrentTimer(`${timer}s`);
-      }
-    }
-  }, [tenzies, rollCount, timer]);
-
   return (
     <div className="records">
       <p>
-        Best Rolls | <span className="record">{currentRollCount}</span>
+        Best Rolls | <span className="record">{tenzies ? rollCount : "0"}</span>
       </p>
       <p>
-        Best Time | <span className="record">{currentTimer}</span>
+        Best Time |{" "}
+        <span className="record">
+          {tenzies ? (
+            <span>{`${timer.seconds
+              .toString()
+              .padStart(2, "0")}:${timer.milliseconds
+              .toString()
+              .padStart(3, "0")
+              .slice(0, 2)}`}</span>
+          ) : (
+            "0s"
+          )}s
+        </span>
       </p>
     </div>
   );

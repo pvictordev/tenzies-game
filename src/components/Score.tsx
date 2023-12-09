@@ -12,13 +12,13 @@ export default function Score({ rollCount, timer, tenzies }) {
           {tenzies ? (
             <span>{`${timer.seconds
               .toString()
-              .padStart(2, "0")}:${timer.milliseconds
+              .padStart(2, "0")}.${timer.milliseconds
               .toString()
               .padStart(3, "0")
-              .slice(0, 2)}`}</span>
+              .slice(0, 2)}s`}</span>
           ) : (
             "0s"
-          )}s
+          )}
         </span>
       </p>
     </div>

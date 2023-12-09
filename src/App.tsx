@@ -19,9 +19,6 @@ export default function App(): JSX.Element {
   const [timer, setTimer] = useState({ seconds: 0, milliseconds: 0 });
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
-  // const [bestRolls, setBestRolls] = useState<number>(0);
-  // const [bestTime, setBestTime] = useState<number>(0);p
-
   useEffect(() => {
     const firstValue = dice[0].value;
     const allHeld = dice.every((die) => die.held);
@@ -105,7 +102,6 @@ export default function App(): JSX.Element {
     <Die key={die.id} {...die} hold={() => holdDice(die.id)} />
   ));
 
-console.log(timer)
   return (
     <section className="tenzies">
       {tenzies && <Confetti className="confetti" />}
@@ -131,14 +127,15 @@ console.log(timer)
               .padStart(2, "0")}:${timer.milliseconds
               .toString()
               .padStart(3, "0")
-              .slice(0, 2)}`}</span>
+              .slice(0, 2)}`}
+            </span>
           </p>
         </div>
         <div className="die-container">{diceElements}</div>
         <button className="roll-dice" onClick={rollUnheldDice}>
           {tenzies ? "Reset" : "Roll"}
         </button>
-              
+
         <Score rollCount={rollCount} timer={timer} tenzies={tenzies} />
       </main>
       <div>

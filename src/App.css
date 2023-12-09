@@ -33,8 +33,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90%;
-  & p {
+  gap:5rem;
+  width: 75%;
+  span {
+  
   }
 }
 /* .instructions {
